@@ -47,15 +47,15 @@ Example:
 def check_permutation_v1(str1, str2):
     	if str1 is None or str2 is None:
     		return False
-		if len(str1) != len(str2):
+	if len(str1) != len(str2):
     		return False
 
-		return sorted(str1) == sorted(str2)
+	return sorted(str1) == sorted(str2)
 
-def check_permutation_v1(str1, str2):
-		if str1 is None or str2 is None:
+def check_permutation_v2(str1, str2):
+	if str1 is None or str2 is None:
     		return False
-		if len(str1) != len(str2):
+	if len(str1) != len(str2):
     		return False
 
     	for char in str1:
@@ -66,8 +66,8 @@ def check_permutation_v1(str1, str2):
 
 def main():
 
-	check_permutation("Listen", "Silent")
-	check_permutation_v1("Triangle", "Integral")
+	check_permutation_v1("Listen", "Silent")
+	check_permutation_v2("Triangle", "Integral")
 
 if __name__ == "__main__":
     main()
