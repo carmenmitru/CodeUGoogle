@@ -22,8 +22,8 @@ class Node:
             return True
 
         return False
- 
-# Driver program to test above function
+
+    
 root = Node(16)
 root.left = Node(9)
 root.right = Node(18)
