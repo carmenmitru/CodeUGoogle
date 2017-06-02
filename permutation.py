@@ -24,8 +24,8 @@ def check_permutation_v2(str1, str2):
     	unique_char[np.int(ord(char)-97)]-=1
     
     for x in unique_char:
-	    if unique_char[x] != 0:
-	        return False
+	if unique_char[x] != 0:
+		return False
     return True
 
 def main():
