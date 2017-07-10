@@ -1,0 +1,45 @@
+class AlienDictionary(object):
+    def alienOrder(self, words):
+        # Find ancestors of each node by DFS.
+        nodes, ancestors = sets.Set(), {}
+        for i in xrange(len(words)):
+            for c in words[i]:
+                nodes.add(c)
+        for node in nodes:
+            ancestors[node] = []
+        for i in xrange(1, len(words)):
+            if len(words[i-1]) > len(words[i]) and \
+                words[i-1][:len(words[i])] == words[i]:
+                    return ""
+            self.findEdges(words[i - 1], words[i], ancestors)
+
+        
+        result = []
+        visited = {}
+        for node in nodes:
+            if self.topSortDFS(node, node, ancestors, visited, result):
+                return ""
+        
+        return "".join(result)
+
+
+    # Find edges
+    def findEdges(self, word1, word2, ancestors):
+        min_len = min(len(word1), len(word2))
+        for i in xrange(min_len):
+            if word1[i] != word2[i]:
+                ancestors[word2[i]].append(word1[i])
+                break
+
+
+    # Topological sort
+    def topSortDFS(self, root, node, ancestors, visited, result):
+        if node not in visited:
+            visited[node] = root
+            for ancestor in ancestors[node]:
+                if self.topSortDFS(root, ancestor, ancestors, visited, result):
+                    return True
+            result.append(node)
+        elif visited[node] == root:
+            return True
+        return False
